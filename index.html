@@ -656,7 +656,7 @@
     <div class="container">
         <header class="public-header">
             <div class="logo">
-                <h2><i class="fas fa-server"></i> OfficeStock</h2>
+                <h2><i class="fas fa-server"></i> OfficeStock Pro</h2>
             </div>
             <div class="actions">
                 <span class="badge" id="viewModeBadge"><i class="fas fa-eye"></i> Public View</span>
@@ -846,15 +846,12 @@
 
     <script>
         // ====== SUPABASE CONFIGURATION ======
-        const SUPABASE_URL = 'https://lrtztjsnwwdckmmjuesb.supabase.co/rest/v1/';
+        // ✅ YOUR CORRECT CREDENTIALS
+        const SUPABASE_URL = 'https://lrtztjsnwwdckmmjuesb.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zaWJwc2N6Y3Vzcmh0ZnpwZmpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ4Njc0MzAsImV4cCI6MjEwMDQ0MzQzMH0.0ubmcNf-2j2WQ8JqaEj5OUDoLVY2tUausPDnJXuympw';
         
-        // Fix: Remove space in URL
-        const supabaseUrl = SUPABASE_URL.replace(/\s/g, '');
-        const supabaseKey = SUPABASE_ANON_KEY;
-        
         // Initialize Supabase client
-        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         // ====== CREDENTIALS ======
         const USERS = {
@@ -1128,7 +1125,6 @@
                     },
                     (payload) => {
                         console.log('Realtime change:', payload);
-                        // Reload items when any change occurs
                         loadItemsFromSupabase();
                     }
                 )
